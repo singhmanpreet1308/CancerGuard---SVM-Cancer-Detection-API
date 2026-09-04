@@ -1,11 +1,12 @@
 import joblib
-import numpy as np
-import pandas as pd
 
 from app.config import MODEL_PATH
 
 
 class SVMModelHandler:
+
+    # Experimental operating threshold selected during model evaluation
+    OPERATING_THRESHOLD = 0.30
 
     def __init__(self):
         self.model = None
@@ -24,18 +25,6 @@ class SVMModelHandler:
 
         return self.model
 
-    def predict(self, features):
-        """
-        Generate class prediction.
-        """
-
-        if self.model is None:
-            raise RuntimeError("Model has not been loaded.")
-
-        prediction = self.model.predict(features)
-
-        return int(prediction[0])
-
     def predict_proba(self, features):
         """
         Generate prediction probabilities.
@@ -48,14 +37,41 @@ class SVMModelHandler:
 
         return probabilities[0]
 
-    def predict_with_confidence(self, features):
+    def predict(self, features):
         """
-        Generate prediction and confidence score.
-        """
+        Generate class prediction using the selected
+        experimental operating threshold.
 
-        prediction = self.predict(features)
+        Class 0: Benign / absent
+        Class 1: Malignant / present
+        """
 
         probabilities = self.predict_proba(features)
+
+        malignant_probability = float(probabilities[1])
+
+        prediction = (
+            1
+            if malignant_probability >= self.OPERATING_THRESHOLD
+            else 0
+        )
+
+        return prediction
+
+    def predict_with_confidence(self, features):
+        """
+        Generate threshold-based prediction and confidence score.
+        """
+
+        probabilities = self.predict_proba(features)
+
+        malignant_probability = float(probabilities[1])
+
+        prediction = (
+            1
+            if malignant_probability >= self.OPERATING_THRESHOLD
+            else 0
+        )
 
         confidence = float(probabilities[prediction])
 

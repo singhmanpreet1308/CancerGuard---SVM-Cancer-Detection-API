@@ -27,8 +27,8 @@ The model is developed using the  **Wisconsin Breast Cancer Diagnostic dataset**
 
 The target variable is:
 
-* `<span>M</span>` — Malignant
-* `<span>B</span>` — Benign
+* `M` — Malignant
+* `B` — Benign
 
 During model development, the target was encoded as:
 
@@ -213,9 +213,9 @@ Input validation is handled through FastAPI and Pydantic, while protected predic
 
 ---
 
-### STEP 6 — Test the `<span>/predict</span>` Endpoint
+### STEP 6 — Test the `/predict` Endpoint
 
-Open the `<span>/predict</span>` endpoint in Swagger UI and click  **Try it out** .
+Open the `/predict` endpoint in Swagger UI and click  **Try it out** .
 
 Enter the required API key and provide all 30 breast cancer diagnostic features in the JSON request body.
 

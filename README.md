@@ -121,15 +121,15 @@ pip install -r requirements.txt
 
 ### STEP 3 — Configure the API Key
 
-Create a `<span>.env</span>` file in the project root directory and add your API key:
+Create a `.env` file in the project root directory and add your API key:
 
 ```
 API_KEY = "your_api_key_here"
 ```
 
-The API key is required to access the protected `<span>/predict</span>` endpoint.
+The API key is required to access the protected `/predict<` endpoint.
 
-> **Important:** Do not commit the `<span>.env</span>` file to GitHub. Make sure `<span>.env</span>` is included in `<span>.gitignore</span>`.
+> **Important:** Do not commit the `.env` file to GitHub. Make sure `.env` is included in `.gitignore`.
 
 ---
 

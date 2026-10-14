@@ -16,9 +16,9 @@ The project implements an end-to-end machine learning workflow covering data pre
 * Prediction confidence/probability returned with each result
 * API-key authentication for protected prediction requests
 * Pydantic-based request validation
-* `<span>/health</span>` endpoint for API health monitoring
+* `/health<` endpoint for API health monitoring
 * Interactive Swagger/OpenAPI documentation
-* Automated API and model tests using `<span>pytest</span>`
+* Automated API and model tests using `pytest`
 * Prediction latency validation
 
 ## Dataset
